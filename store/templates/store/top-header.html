@@ -1,0 +1,30 @@
+{% if messages %}
+<div class="messages">
+    {% for message in messages %}
+    <div class="message {% if message.tags %}{{ message.tags }}{% endif %}">
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- TOP HEADER -->
+<div id="top-header">
+    <div class="container fs-4 animated-text">
+        <ul class="header-links pull-left">
+            <li><a href="tel:+2347068338299"><i class="fs-3 fa fa-phone"></i> +2347068338299</a></li>
+            <li><a href="mailto:contact@larrymontego.com"><i class="fs-3 fa fa-envelope-o"></i> contact@larrymontego.com</a></li>
+            <li><a href=""><i class="fs-3 fa fa-map-marker"></i>X24A &B jubriel Martins Street, sunnyvale estate</a></li>
+        </ul>
+        <ul class="header-links pull-right">
+            {% if user.is_authenticated %}
+            <!-- User is signed in -->
+            <li><a href=""><i class=" fs-3 fa fa-user-o"></i> My Account</a></li>
+            {% else %}
+            <!-- User is not signed in -->
+            <li><a href="{% url 'account_login' %}"><i class="fs-3 fa fa-sign-in"></i> Sign in</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+<!-- /TOP HEADER -->

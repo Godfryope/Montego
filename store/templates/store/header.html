@@ -1,0 +1,95 @@
+{% load static %}
+
+<!-- HEADER -->
+<header>
+    {% include 'store/top-header.html' %}
+
+    <!-- MAIN HEADER -->
+    <div id="header">
+        <!-- container -->
+        <div class="container-fluid">
+            <!-- row -->
+            <div class="row align-items-center"> <!-- Align items horizontally -->
+                <!-- LOGO and H2 -->
+                <div class="col-8 col-lg-3 col-md-3"> <!-- Takes up 8 out of 12 columns on small screens -->
+                    <div class="row align-items-center"> <!-- Align items horizontally -->
+                        <div class="col-3">
+                            <div class="header-logo ">
+                                <a href="/" class="logo">
+                                    <img width="65" height="65" src="{% static 'img/logo-black.png' %}" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-9 m-0 p-0">
+                            <h2>LarryMontego</h2>
+                        </div>
+                    </div>
+                </div>
+                <!-- /LOGO and H2 -->
+                <!-- Menu Toggle -->
+                <div class="col-3 col-md-0 col-lg-0 text-right ml-auto d-block d-md-none me-0"> <!-- Takes up 4 out of 12 columns on small screens -->
+                    <div class="menu-toggle "> <!-- Align to right on small screens -->
+                        <a href="#">
+                            <i class="fa fa-bars"></i>
+                            {% comment %} <span>Menu</span> {% endcomment %}
+                        </a>
+                    </div>
+                </div>
+                <!-- /Menu Toggle -->
+            
+                
+            
+
+                {% include 'store/search.html' %}
+
+                <!-- ACCOUNT -->
+                <div class="col-md-3 clearfix text-right text-md-left"> <!-- Align text right on small screens -->
+                    <div id="responsive-nav" class="header-ctn">
+                        <!-- Wishlist -->
+                        <div>
+                            <a href="{% url 'wishlist' %}">
+                                <i class="fa fa-heart-o"></i>
+                                <span>Your Wishlist</span>
+                                <div class="qty">{{ wishlist_items_count }}</div>
+                            </a>
+                        </div>
+                        <!-- /Wishlist -->
+                        <!-- Cart -->
+                        <div class="dropdown">
+                            <a href="{% url 'cart' %}">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span>Your Cart</span>
+                                <div class="qty">{{ cart_items_count }}</div>
+                            </a>
+                        </div>
+                        {% if user.is_authenticated %}
+                        <div class="dropdown">
+                            <a href="">
+                                <i class="fs-1 fa fa-user-o"></i>
+                                <span>Account</span>
+                                {% comment %} <div class="qty">{{ cart_items_count }}</div> {% endcomment %}
+                            </a>
+                        </div>
+                        {% else %}
+                        <div class="dropdown">
+                            <a href="{% url 'account_login' %}">
+                                <i class="fs-1 fa fa-sign-in"></i>
+                                <span>Login</span>
+                                {% comment %} <div class="qty">{{ cart_items_count }}</div> {% endcomment %}
+                            </a>
+                        </div>
+                        {% endif %}
+                        <!-- /Cart -->
+                    </div>
+                    
+                </div>
+                <!-- /ACCOUNT -->
+                
+            </div>
+            <!-- row -->
+        </div>
+        <!-- container -->
+    </div>
+    <!-- /MAIN HEADER -->
+</header>
+<!-- /HEADER -->
